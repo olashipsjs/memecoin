@@ -1,0 +1,71 @@
+---
+import Box from "../components/Box";
+import Container from "../components/Container";
+import Heading from "../components/Heading";
+import Text from "../components/Text";
+import Button from "../components/Button";
+
+const urls = [
+    {
+        group: 'Resources', 
+        children: [
+            {label: 'Domain', uri: '/'},
+            {label: 'GrumpyFi', uri: '/'},
+            {label: 'Grumpy Play', uri: '/'},
+            {label: 'Trading Bot', uri: '/'},
+            {label: 'NFTs', uri: '/'},
+            {label: 'Grumpy Play', uri: '/'},
+            {label: 'Charity', uri: '/'},
+            {label: 'Whitepaper', uri: '/'},
+            {label: 'Updates', uri: '/'},
+            {label: 'Communities', uri: '/'},
+        ],
+    },
+    {
+        group: 'Socials', 
+        children: [
+            {label: 'Twitter(now X)', uri: '/'},
+            {label: 'Facebook', uri: '/'},
+            {label: 'Instagram', uri: '/'},
+        ],
+    },
+    {
+        group: 'Contracts', 
+        children: [
+            {label: 'Binance Smart Chain', uri: '/'},
+            {label: 'Ethereum', uri: '/'},
+        ],
+    }
+]
+
+---
+
+<>
+    <Container as="footer" className='bg-slate-50'>
+        <Container className='max-w-[1140px] w-full mx-auto py-12 px-3'>
+            <Box className="flex flex-col md:flex-row gap-10">
+                {urls.map((url) => {
+                    return (
+                        <Box>
+                            <Heading className="text-[14px] font-medium">{url.group}</Heading>
+                            <Box className="mt-4 space-y-2">
+                                {url.children.map((child) => {
+                                    return (
+                                        <a href={child.uri} class="block text-xs text-gray-600 hover:text-gray-950">
+                                            {child.label}
+                                        </a>
+                                    )
+                                })}
+                            </Box>
+                        </Box>
+                    )
+                })}
+
+                <Box className="flex flex-col flex-1 justify-end items-end">
+                    <Heading className="font-medium">Grumpy - the digital asset for everyone</Heading>
+                </Box>
+            </Box>
+
+        </Container>
+    </Container>
+</>
