@@ -1,0 +1,47 @@
+---
+import Button from "../components/Button";
+import Box from "../components/Box";
+
+
+const navItems = [
+    {label: "Overview", uri: "#", type: "link"},
+    {label: "Socials", uri: "#", type: "link"},
+    {label: "Updates", uri: "#", type: "link"},
+    {label: "Career", uri: "#", type: "link"},
+    {label: "Security", uri: "#", type: "link"},
+] as const
+---
+
+<>
+    <Button id="modalTrigger" className="block md:hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 12 12">
+            <path fill="currentColor" d="M2.146 4.646a.5.5 0 0 1 .708 0L6 7.793l3.146-3.147a.5.5 0 1 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 0 1 0-.708" />
+        </svg>
+    </Button>
+
+    <Box className="absolute top-12 bg-white z-20 w-full shadow-lg left-0 px-5 py-3 hidden" id="modalBox">
+        {navItems.map((item) => {
+            return (
+                <li class="cursor-pointer block text-sm text-gray-600 hover:text-primary">
+                    <a href="/" class="block py-1">{item.label}</a>
+                </li>
+            )
+        })}
+    </Box>
+
+    <script>
+        let showModal = false;
+
+        const modalTrigger = document.querySelector("#modalTrigger");
+        const modalBox = document.querySelector("#modalBox");
+        const items = document.querySelectorAll("li.item");
+
+        const handleToggle = () => {
+            showModal = !showModal;
+            modalBox?.classList.toggle("hidden", !showModal);
+        }
+
+        modalTrigger?.addEventListener('click', handleToggle);
+        modalBox?.addEventListener('click', handleToggle);
+    </script>
+</>

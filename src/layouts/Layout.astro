@@ -5,10 +5,8 @@ import Footer from "./Footer.astro"
 import {LazyMotion, domAnimation} from "framer-motion"
 
     type Props = {
-        meta: {
-            description: string,
-        }
         title: string,
+        meta: { description: string},
     }
 
     const {title, meta} = Astro.props as Props
